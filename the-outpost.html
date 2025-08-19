@@ -10,7 +10,6 @@
             --fg: #ffffff;
             --muted: #bfbfbf;
             --bg: #000000;
-            --divider: #333333;
         }
 
         * {
@@ -22,7 +21,6 @@
             font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
             background: var(--bg);
             color: var(--fg);
-            text-align: center;
         }
         /* HERO */
         .hero {
@@ -32,7 +30,9 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
+            position: relative;
             padding: 0 16px;
+            text-align: center;
         }
 
         .title {
@@ -47,33 +47,33 @@
             color: var(--muted);
             font-style: italic;
         }
-        /* ABOUT */
-        .about {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 48px 20px 24px;
-            text-align: left;
+        /* ABOUT OVER IMAGE */
+        .about-overlay {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            max-width: 450px;
+            text-align: right;
         }
 
-            .about h2 {
-                margin: 0 0 12px;
-                text-align: center;
-                font-size: clamp(20px, 3vw, 28px);
+            .about-overlay h2 {
+                margin: 0 0 8px;
+                font-size: clamp(18px, 2.5vw, 24px);
             }
 
-            .about p {
-                margin: 0 auto;
-                line-height: 1.7;
-                font-size: 18px;
+            .about-overlay p {
+                margin: 0;
+                line-height: 1.5;
+                font-size: 16px;
                 color: #e9e9e9;
-                max-width: 800px;
             }
         /* FOOTER */
         .footer {
-            border-top: 1px solid var(--divider);
+            background: #000;
             color: var(--muted);
-            padding: 18px 16px 34px;
+            padding: 14px 16px 20px;
             font-size: 14px;
+            text-align: center;
         }
     </style>
 </head>
@@ -83,18 +83,18 @@
     <header class="hero">
         <h1 class="title">The Outpost</h1>
         <p class="subtitle">Prison of Infinite Dreams</p>
-    </header>
 
-    <!-- ABOUT -->
-    <section class="about">
-        <h2>About the Project</h2>
-        <p>
-            <em>The Outpost</em> is an experimental short film created in Unreal Engine
-            using MetaHumans and full-body motion capture. It explores identity, time,
-            and the nature of consciousness &mdash; blending cinematic storytelling
-            with real-time technology to push the boundaries of digital filmmaking.
-        </p>
-    </section>
+        <!-- ABOUT overlayed at bottom right -->
+        <div class="about-overlay">
+            <h2>About the Project</h2>
+            <p>
+                <em>The Outpost</em> is an experimental short film created in Unreal Engine
+                using MetaHumans and full-body motion capture. It explores identity, time,
+                and the nature of consciousness &mdash; blending cinematic storytelling
+                with real-time technology to push the boundaries of digital filmmaking.
+            </p>
+        </div>
+    </header>
 
     <!-- FOOTER -->
     <footer class="footer">
