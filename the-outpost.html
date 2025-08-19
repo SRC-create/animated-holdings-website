@@ -22,6 +22,7 @@
             background: var(--bg);
             color: var(--fg);
         }
+
         /* HERO */
         .hero {
             height: 100vh;
@@ -37,17 +38,18 @@
 
         .title {
             margin: 0;
-            font-size: clamp(40px, 8vw, 80px);
+            font-size: clamp(32px, 7vw, 80px); /* scales on small screens */
             letter-spacing: .3px;
         }
 
         .subtitle {
             margin: 8px 0 0;
-            font-size: clamp(16px, 2.5vw, 24px);
+            font-size: clamp(14px, 3.5vw, 24px); /* scales on small screens */
             color: var(--muted);
             font-style: italic;
         }
-        /* ABOUT OVER IMAGE */
+
+        /* ABOUT overlay (desktop / tablets) */
         .about-overlay {
             position: absolute;
             bottom: 30px;
@@ -59,18 +61,19 @@
 
             .about-overlay h2 {
                 margin: 0 0 8px;
-                font-size: clamp(18px, 2.5vw, 24px);
+                font-size: clamp(16px, 2.5vw, 24px); /* responsive */
             }
 
             .about-overlay p {
                 margin: 0;
                 line-height: 1.55;
-                font-size: 16px;
+                font-size: clamp(14px, 2vw, 18px); /* responsive */
                 color: #e9e9e9;
                 overflow-wrap: anywhere;
                 word-break: break-word;
                 hyphens: auto;
             }
+
         /* FOOTER */
         .footer {
             background: #000;
@@ -80,12 +83,27 @@
             text-align: center;
         }
 
-        @media (max-width: 480px) {
-            .about-overlay {
-                left: 16px;
-                right: 16px;
-                bottom: 16px;
+        /* MOBILE layout: drop the about block below the title/subtitle */
+        @media (max-width: 600px) {
+            .hero {
+                padding: 0 12px;
             }
+
+            .about-overlay {
+                position: static; /* no longer absolute; flows under title */
+                max-width: 90%;
+                margin: 20px auto 0; /* spacing from subtitle */
+                text-align: left;
+            }
+
+                .about-overlay h2 {
+                    font-size: clamp(16px, 4vw, 20px);
+                }
+
+                .about-overlay p {
+                    font-size: clamp(14px, 3.8vw, 16px);
+                    line-height: 1.6;
+                }
         }
     </style>
 </head>
@@ -96,7 +114,7 @@
         <h1 class="title">The Outpost</h1>
         <p class="subtitle">Prison of Infinite Dreams</p>
 
-        <!-- ABOUT overlayed at bottom left -->
+        <!-- ABOUT (overlay on desktop, flows on mobile) -->
         <div class="about-overlay">
             <h2>About the Project</h2>
             <p>
