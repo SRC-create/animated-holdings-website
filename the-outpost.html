@@ -1,263 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>The Outpost: Prison of Infinite Dreams | Animated Holdings</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A cinematic sci-fi short film created in Unreal Engine with MetaHumans and performance capture." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Outpost</title>
     <style>
-        :root {
-            --bg: #0b0c10;
-            --fg: #f5f7fb;
-            --muted: #b6bdc9;
-            --accent: #0ea5e9;
-            --accent2: #22c55e;
-            --card: #12141a;
-            --overlay: rgba(0,0,0,.45);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             margin: 0;
-            font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-            color: var(--fg);
-            background: var(--bg);
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: black;
         }
 
-        /* HERO */
         .hero {
-            position: relative;
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            background: #000 url('images/splash.jpg') center/cover no-repeat;
-            overflow: hidden;
-        }
-
-            .hero::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: var(--overlay);
-            }
-
-        .hero-inner {
-            position: relative;
-            z-index: 1;
-            padding: 24px;
-            max-width: 1000px;
-        }
-
-        .title {
-            font-size: clamp(32px, 5vw, 64px);
-            margin: 0 0 8px;
-            letter-spacing: .5px;
-        }
-
-        .tagline {
-            font-size: clamp(16px, 2.2vw, 22px);
-            color: var(--muted);
-            margin: 0 auto 24px;
-            max-width: 900px;
-            background: rgba(0,0,0,.35);
-            padding: 10px 14px;
-            border-radius: 10px;
-        }
-
-        .cta-row {
+            background-image: url('images/splash.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh; /* full viewport height */
             display: flex;
-            gap: 12px;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            border: 0;
-            border-radius: 12px;
-            padding: 12px 18px;
-            text-decoration: none;
-            font-weight: 700;
-            background: var(--accent);
-            color: #071018;
-            box-shadow: 0 6px 24px rgba(0,0,0,.25);
-        }
-
-            .btn.secondary {
-                background: var(--accent2);
-                color: #04220f;
-            }
-
-            .btn.ghost {
-                background: transparent;
-                color: var(--fg);
-                outline: 2px solid rgba(255,255,255,.35);
-            }
-
-        .down {
-            margin-top: 24px;
-            display: inline-block;
-            color: var(--muted);
-            text-decoration: none;
-        }
-
-        /* MAIN */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-        .section {
-            background: linear-gradient(180deg, #0c0f14 0%, #0b0c10 100%);
-            border: 1px solid rgba(255,255,255,.06);
-            border-radius: 18px;
-            padding: 24px;
-            margin: 18px 0;
-        }
-
-            .section h2 {
-                margin: 0 0 10px;
-                font-size: clamp(22px, 3vw, 30px);
-            }
-
-        .grid {
-            display: grid;
-            gap: 16px;
-        }
-
-        @media (min-width: 900px) {
-            .grid.two {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        ul {
-            margin: 8px 0 0 20px;
-        }
-
-        .meta {
-            color: var(--muted);
-            font-size: 14px;
-        }
-
-        footer {
-            padding: 40px 0;
             text-align: center;
-            color: var(--muted);
         }
+
+            .hero h1 {
+                font-size: 3em;
+                background: rgba(0,0,0,0.5);
+                padding: 20px;
+                border-radius: 8px;
+            }
     </style>
 </head>
 <body>
+    <div class="hero">
+        <h1>The Outpost</h1>
+    </div>
 
-    <!-- HERO -->
-    <header class="hero">
-        <div class="hero-inner">
-            <h1 class="title">The Outpost: Prison of Infinite Dreams</h1>
-            <p class="tagline">
-                A cinematic sci-fi short film created in Unreal Engine with MetaHumans and performance capture.
-                On an alien world locked in endless loops, a man and his robot discover time is a prison—and
-                human imagination is the key their makers fear most.
-            </p>
-            <div class="cta-row">
-                <!-- Replace these hrefs when you have links -->
-                <a class="btn" href="https://vimeo.com/your-unlisted-teaser" target="_blank" rel="noopener">Watch Teaser</a>
-                <a class="btn secondary" href="#overview">Project Details</a>
-                <a class="btn ghost" href="https://your-link-to-project-deck.pdf" target="_blank" rel="noopener">Project Deck (PDF)</a>
-            </div>
-            <a class="down" href="#overview">▼ Learn more</a>
-        </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <main class="container">
-        <section id="overview" class="section">
-            <h2>Project Overview</h2>
+    <main>
+        <section>
+            <h2>About the Project</h2>
             <p>
-                <em>The Outpost</em> is a philosophical science-fiction short exploring consciousness, control, and the limits of reality.
-                Stranded at a remote outpost on Kepler-16b, <strong>Alex</strong>—a hyper-real <strong>MetaHuman</strong>—and his robot
-                <strong>Rex</strong> begin remembering prior loops. As their world “stutters” and resets, they uncover a design: reality as
-                an elegant, self-repairing prison built to contain the power of human imagination.
+                *The Outpost* is an experimental short film created in Unreal Engine using MetaHumans
+                and full-body motion capture. It explores identity, time, and the nature of consciousness.
             </p>
-        </section>
-
-        <section class="section grid two">
-            <div>
-                <h2>Why Unreal Engine</h2>
-                <ul>
-                    <li><strong>MetaHumans</strong> for facial nuance and grounded performance</li>
-                    <li><strong>Body + Live Link face</strong> for unified performance capture</li>
-                    <li><strong>Sequencer &amp; virtual cinematography</strong> for in-engine shot design</li>
-                    <li><strong>Real-time “reality stutters”</strong>—environment fractures rendered live in UE</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Development Status</h2>
-                <ul>
-                    <li>Script in advanced draft; scratch audio for timing</li>
-                    <li>Establishing shot blocked in UE; customized Marketplace sets</li>
-                    <li>Mocap pipeline operational; Scene 1 captured &amp; cleaned</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section grid two">
-            <div>
-                <h2>Next Steps</h2>
-                <ul>
-                    <li>Script lock → full animatic in Unreal</li>
-                    <li>Custom MetaHuman for Alex; Chaos Cloth; finalize Rex rig</li>
-                    <li>Principal capture; lighting/VFX; final renders; score &amp; mix</li>
-                </ul>
-            </div>
-            <div>
-                <h2>Budget (Grant Use)</h2>
-                <ul>
-                    <li>Dedicated development time — <strong>$45k</strong></li>
-                    <li>Specialist contracting (tech artist, sound) — <strong>$10k</strong></li>
-                    <li>Premium assets &amp; tools — <strong>$7k</strong></li>
-                    <li>Original score — <strong>$5k</strong></li>
-                    <li>Contingency — <strong>$2k</strong></li>
-                </ul>
-                <p class="meta">Total request: $69,000</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Team</h2>
-            <p>
-                <strong>Stephen Cooper</strong> — Writer/Director/Animator (25+ years in film &amp; games). Leading direction, performance capture,
-                MetaHumans, and Unreal cinematography.
-            </p>
-            <p class="meta">Grant-enabled collaborators: Technical Artist (cloth/rig/optimization), Sound Designer/Composer.</p>
-        </section>
-
-        <section class="section">
-            <h2>Community Giveback</h2>
-            <ul>
-                <li>Free “Solo Virtual Production” playbook (tutorials + guides)</li>
-                <li>Release of <strong>Rex</strong> (rigged android) as a free asset</li>
-                <li>Transparent post-mortem (article + video) with lessons learned</li>
-            </ul>
-        </section>
-
-        <section id="contact" class="section">
-            <h2>Contact</h2>
-            <p>Partnerships, press, or support:</p>
-            <p><a href="mailto:hello@animated-holdings.com">hello@animated-holdings.com</a></p>
         </section>
     </main>
-
-    <footer class="container">
-        <p class="meta">© Animated Holdings — The Outpost</p>
-    </footer>
 </body>
 </html>
