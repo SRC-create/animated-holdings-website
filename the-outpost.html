@@ -1,48 +1,72 @@
-<!-- HERO -->
-<header class="hero">
-    <div class="hero-inner">
-        <h1 class="title">The Outpost</h1>
-        <p class="subtitle">Prison of Infinite Dreams</p>
-        <p class="tagline">An experimental short film created in Unreal Engine with MetaHumans and motion capture</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Outpost</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            background-color: black;
+            text-align: center;
+        }
+
+        .hero {
+            height: 100vh;
+            background: url('/images/splash.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+            .hero h1 {
+                font-size: 4em;
+                margin: 0;
+            }
+
+            .hero h2 {
+                font-size: 1.5em;
+                margin: 10px 0 0;
+                font-weight: normal;
+            }
+
+        .about {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2em;
+            line-height: 1.6em;
+        }
+
+        .footer {
+            font-size: 0.9em;
+            color: #aaa;
+            padding: 20px;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>The Outpost</h1>
+        <h2>Prison of Infinite Dreams</h2>
     </div>
-</header>
 
-<style>
-    .hero {
-        position: relative;
-        min-height: 100vh;
-        display: grid;
-        place-items: center;
-        text-align: center;
-        background: #000 url('images/splash.jpg') center/cover no-repeat;
-        overflow: hidden;
-    }
+    <div class="about">
+        <h2>About the Project</h2>
+        <p>
+            <em>The Outpost</em> is an experimental short film created in Unreal Engine
+            using MetaHumans and full-body motion capture.
+            It explores identity, time, and the nature of consciousness — blending cinematic storytelling
+            with real-time technology to push the boundaries of digital filmmaking.
+        </p>
+    </div>
 
-    .hero-inner {
-        position: relative;
-        z-index: 1;
-        padding: 24px;
-    }
-
-    .title {
-        font-size: clamp(42px, 6vw, 80px);
-        margin: 0;
-        color: #fff;
-    }
-
-    .subtitle {
-        margin-top: 8px;
-        font-size: clamp(16px, 2.2vw, 24px);
-        color: #ccc;
-        font-style: italic;
-    }
-
-    .tagline {
-        margin-top: 16px;
-        font-size: clamp(14px, 2vw, 20px);
-        color: #bbb;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-</style>
+    <div class="footer">
+        <p><em>Work in Progress — This project is currently in development as part of an Unreal Engine MegaGrant application.</em></p>
+    </div>
+</body>
+</html>
