@@ -1,72 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
     <title>The Outpost</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="The Outpost — an experimental short film created in Unreal Engine using MetaHumans and full-body motion capture." />
     <style>
+        :root {
+            --fg: #ffffff;
+            --muted: #bfbfbf;
+            --bg: #000000;
+            --divider: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            background-color: black;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            background: var(--bg);
+            color: var(--fg);
             text-align: center;
         }
-
+        /* HERO */
         .hero {
             height: 100vh;
-            background: url('/images/splash.jpg') no-repeat center center/cover;
+            background: url('images/splash.jpg') center/cover no-repeat;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             flex-direction: column;
+            padding: 0 16px;
         }
 
-            .hero h1 {
-                font-size: 4em;
-                margin: 0;
-            }
+        .title {
+            margin: 0;
+            font-size: clamp(40px, 8vw, 80px);
+            letter-spacing: .3px;
+        }
 
-            .hero h2 {
-                font-size: 1.5em;
-                margin: 10px 0 0;
-                font-weight: normal;
-            }
-
+        .subtitle {
+            margin: 8px 0 0;
+            font-size: clamp(16px, 2.5vw, 24px);
+            color: var(--muted);
+            font-style: italic;
+        }
+        /* ABOUT */
         .about {
-            padding: 40px 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            font-size: 1.2em;
-            line-height: 1.6em;
+            padding: 48px 20px 24px;
+            text-align: left;
         }
 
+            .about h2 {
+                margin: 0 0 12px;
+                text-align: center;
+                font-size: clamp(20px, 3vw, 28px);
+            }
+
+            .about p {
+                margin: 0 auto;
+                line-height: 1.7;
+                font-size: 18px;
+                color: #e9e9e9;
+                max-width: 800px;
+            }
+        /* FOOTER */
         .footer {
-            font-size: 0.9em;
-            color: #aaa;
-            padding: 20px;
-            border-top: 1px solid #333;
+            border-top: 1px solid var(--divider);
+            color: var(--muted);
+            padding: 18px 16px 34px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <h1>The Outpost</h1>
-        <h2>Prison of Infinite Dreams</h2>
-    </div>
 
-    <div class="about">
+    <!-- HERO -->
+    <header class="hero">
+        <h1 class="title">The Outpost</h1>
+        <p class="subtitle">Prison of Infinite Dreams</p>
+    </header>
+
+    <!-- ABOUT -->
+    <section class="about">
         <h2>About the Project</h2>
         <p>
             <em>The Outpost</em> is an experimental short film created in Unreal Engine
-            using MetaHumans and full-body motion capture.
-            It explores identity, time, and the nature of consciousness — blending cinematic storytelling
+            using MetaHumans and full-body motion capture. It explores identity, time,
+            and the nature of consciousness &mdash; blending cinematic storytelling
             with real-time technology to push the boundaries of digital filmmaking.
         </p>
-    </div>
+    </section>
 
-    <div class="footer">
-        <p><em>Work in Progress — This project is currently in development as part of an Unreal Engine MegaGrant application.</em></p>
-    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <em>Work in Progress &mdash; This project is currently in development as part of an Unreal Engine MegaGrant application.</em>
+    </footer>
+
 </body>
 </html>
