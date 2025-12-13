@@ -3,96 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Holdings Inc. - Interactive Digital Experiences</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Animated Holdings | Stephen Cooper</title>
     <style>
+        :root {
+            --bg: #050505;
+            --panel: #111;
+            --text: #e0e0e0;
+            --dim: #666;
+            --accent: #00ff41; /* Mainframe Terminal Green */
+            --alert: #ff3333; /* Recording Red */
+            --data: #00ccff; /* Data/AI Blue */
+            --font-display: 'Impact', 'Arial Black', sans-serif;
+            --font-tech: 'Courier New', Courier, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827; /* Dark background */
-            color: #E5E7EB; /* Light grey text */
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-tech);
+            overflow-x: hidden;
+            font-size: 14px;
+            line-height: 1.5;
         }
-        a {
-            color: #3B82F6; /* Vibrant blue for links */
-            transition: color 0.3s ease;
+
+        /* CRT Scanline Effect */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.1)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
         }
-        a:hover {
-            color: #60A5FA; /* Lighter blue on hover */
+
+        /* Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-left: 1px solid var(--dim);
+            border-right: 1px solid var(--dim);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
-        .section-header {
-            font-size: 2.25rem; /* 36px */
-            font-weight: 700;
-            margin-bottom: 1.5rem; /* 24px */
-            color: #F3F4F6; /* Slightly brighter for headers */
-            border-bottom: 2px solid #3B82F6;
-            padding-bottom: 0.5rem;
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--dim);
+            padding-bottom: 1rem;
+        }
+
+        .brand {
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .brand span { color: var(--accent); }
+
+        .meta-data {
+            text-align: right;
+            color: var(--dim);
+            font-size: 0.8rem;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            margin-bottom: 6rem;
+        }
+
+        .hero-label {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 8rem);
+            line-height: 0.9;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            mix-blend-mode: screen;
+        }
+
+        .bio-text {
+            max-width: 600px;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+
+        /* Vicon LAB Module */
+        .lab-module {
+            background: var(--panel);
+            border: 1px solid var(--dim);
+            padding: 0;
+            margin-bottom: 6rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .lab-header {
+            grid-column: 1 / -1;
+            padding: 2rem;
+            border-bottom: 1px solid var(--dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .lab-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            text-transform: uppercase;
+        }
+
+        .rec-dot {
+            height: 10px; width: 10px;
+            background-color: var(--alert);
+            border-radius: 50%;
             display: inline-block;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--alert);
         }
-        /* Additional style for the logo to constrain its height and add some margin */
-        .company-logo {
-            max-height: 100px; /* Adjust as needed */
-            margin-bottom: 1rem; /* Space below the logo */
-            border-radius: 0.375rem; /* md rounded corners */
+
+        .lab-column {
+            padding: 2rem;
+        }
+        
+        .lab-column:first-of-type {
+            border-right: 1px solid var(--dim);
+        }
+
+        .col-title {
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            display: block;
+            text-transform: uppercase;
+        }
+        
+        .col-title.ai { color: var(--data); }
+
+        .spec-list {
+            list-style: none;
+            color: #aaa;
+        }
+
+        .spec-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .spec-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--dim);
+        }
+
+        /* Timeline / Credits */
+        .section-header {
+            margin-bottom: 2rem; 
+            color: var(--accent); 
+            text-transform: uppercase;
+            border-bottom: 1px dashed var(--dim);
+            padding-bottom: 0.5rem;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+            align-items: flex-start;
+            transition: all 0.3s;
+        }
+
+        .timeline:hover h2 { color: var(--accent); }
+
+        .year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--dim);
+        }
+        
+        .year.current { color: var(--text); text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+
+        .project-info h2 {
+            font-size: 2.5rem;
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .role {
+            background: var(--panel);
+            padding: 0.2rem 0.6rem;
+            border: 1px solid var(--dim);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding-top: 4rem;
+            border-top: 1px solid var(--dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .contact-btn {
+            background: var(--accent);
+            color: #000;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        
+        .contact-btn:hover {
+            background: var(--text);
+            color: var(--bg);
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .cursor { color: var(--accent); animation: blink 1s infinite; }
+
+        @media (max-width: 768px) {
+            .lab-module { grid-template-columns: 1fr; }
+            .lab-column:first-of-type { border-right: none; border-bottom: 1px solid var(--dim); }
+            .timeline { grid-template-columns: 1fr; }
+            h1 { font-size: 3rem; }
+            footer { flex-direction: column; align-items: flex-start; }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="py-8 bg-gray-900 shadow-lg">
-        <div class="container mx-auto px-6 text-center">
-            <img src="logo.jpg" alt="Animated Holdings Inc. Logo" class="company-logo mx-auto">
+    <div class="scanlines"></div>
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                Animated Holdings<span>_INC</span>
+            </div>
+            <div class="meta-data">
+                LOC: CHILLIWACK, BC<br>
+                EST: 2018 — 2026<br>
+                STATUS: ONLINE
+            </div>
+        </header>
+
+        <section class="hero">
+            <span class="hero-label">/// THE ARCHITECT OF DIGITAL LIFE</span>
+            <h1>
+                From Wireframe<br>
+                To <span style="color: transparent; -webkit-text-stroke: 2px var(--text);">Flesh.</span>
+            </h1>
+            <div class="bio-text">
+                <p>
+                    The creative entity of <strong>Stephen Cooper</strong>.
+                    <br><br>
+                    Bridging the gap between organic movement and digital interpretation. From the dawn of CGI at <em>Mainframe</em> to the frontiers of Embodied AI.
+                    <span class="cursor">_</span>
+                </p>
+            </div>
+        </section>
+
+        <section class="lab-module">
+            <div class="lab-header">
+                <span class="lab-title">Facility: The Volume</span>
+                <div style="text-align: right;">
+                    <span class="rec-dot"></span><span style="font-family: monospace;">VICON OPTICAL ARRAY</span>
+                </div>
+            </div>
             
-            <h1 class="text-4xl md:text-5xl font-bold text-white">Animated Holdings Inc.</h1>
-            <p class="mt-2 text-lg text-gray-300">Forging Immersive Worlds & Interactive Narratives</p>
+            <div class="lab-column">
+                <span class="col-title">/// NARRATIVE & GAME</span>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+                    Full-body performance capture for film, television, and real-time engines.
+                </p>
+                <ul class="spec-list">
+                    <li>Pre-Viz & Tech-Viz</li>
+                    <li>Virtual Production Ready</li>
+                    <li>Unreal / Unity / Maya Pipelines</li>
+                    <li>Cost-effective Indie Solutions</li>
+                </ul>
+            </div>
+
+            <div class="lab-column">
+                <span class="col-title ai">/// AI & ROBOTICS DATA</span>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem;">
+                    Generating high-fidelity "Ground Truth" kinetic datasets for machine learning.
+                </p>
+                <ul class="spec-list">
+                    <li>Embodied AI Training Data</li>
+                    <li>HRI (Human-Robot Interaction) Scenarios</li>
+                    <li>Complex Locomotion & Recovery</li>
+                    <li>Clean .C3D / .CSV Output</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="section-header">
+            /// Selected Archives
         </div>
-    </header>
 
-    <main class="container mx-auto px-6 py-12">
-
-        <section id="about" class="mb-16">
-            <h2 class="section-header">About Us</h2>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
-                <p class="mb-4 text-lg leading-relaxed">
-                    Animated Holdings Inc. is the creative entity of 
-                    <a href="https://www.linkedin.com/in/stephen-cooper-84a1272" target="_blank" rel="noopener noreferrer" class="font-semibold text-sky-400 hover:text-sky-300 underline">Stephen Cooper</a>, 
-                    a digital artist, director, and performer with three decades of pioneering experience in animation and visual storytelling. From directing the groundbreaking CGI series <em class="italic text-gray-400">ReBoot</em> at Mainframe Entertainment to contributing performance animation to critically acclaimed projects like <em class="italic text-gray-400">Kingdom of the Planet of the Apes</em> (Academy Award nominee & Annie Award winner), Stephen's work consistently pushes creative and technical boundaries.
-                </p>
-                <p class="text-lg leading-relaxed">
-                    Based in Chilliwack, BC, Animated Holdings Inc. is dedicated to leveraging this deep expertise to craft original, impactful interactive experiences at the intersection of art and technology.
-                </p>
+        <article class="timeline">
+            <div class="year current">2026</div>
+            <div class="project-info">
+                <span class="role">Animation</span>
+                <h2>Industrial Light & Magic</h2>
+                <p>Currently engaged with the industry standard. Contributing to high-end visual effects pipelines.</p>
             </div>
-        </section>
+        </article>
 
-        <section id="current-project" class="mb-16">
-            <h2 class="section-header">Current Project: Compliance Calibration</h2>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl">
-                <p class="mb-4 text-lg leading-relaxed">
-                    Animated Holdings Inc. is currently developing <strong class="font-semibold text-sky-400">"Compliance Calibration,"</strong> an intense, short-form VR narrative experience. This project plunges users into a chillingly plausible future, exploring profound themes of surveillance, algorithmic control, and manufactured identity in a world where emerging technologies like Brain-in-a-Vat interfaces and teleoperated existence are rapidly reshaping our reality.
-                </p>
-                <p class="mb-4 text-lg leading-relaxed">
-                    Stephen Cooper serves as the Creative Director, Lead Artist, Designer, Developer, Writer, and motion capture performer for the central antagonist, the Compliance Handler. This role is a powerful synthesis of his past professional acting experience and a recent, intensive year mastering performance capture.
-                </p>
+        <article class="timeline">
+            <div class="year">2024</div>
+            <div class="project-info">
+                <span class="role">Performance Animation</span>
+                <h2>Kingdom of the Planet of the Apes</h2>
+                <p>Translating human nuance into digital physiology. Defining the weight and emotion of simulation.</p>
             </div>
-        </section>
+        </article>
 
-        <section id="contact" class="mb-16">
-            <h2 class="section-header">Get In Touch</h2>
-            <div class="bg-gray-800 p-6 rounded-lg shadow-xl text-center">
-                <p class="mb-4 text-lg leading-relaxed">
-                    For inquiries regarding "Compliance Calibration" or Animated Holdings Inc., please contact:
-                </p>
-                <a href="mailto:stephen-cooper@animated-holdings.com" class="text-xl font-semibold hover:text-sky-300">stephen-cooper@animated-holdings.com</a>
+        <article class="timeline">
+            <div class="year">1994</div>
+            <div class="project-info">
+                <span class="role">Director / Creative</span>
+                <h2>ReBoot</h2>
+                <p>Mainframe Entertainment. Directed the world's first fully computer-generated TV series. The origin of the medium.</p>
             </div>
-        </section>
+        </article>
 
-    </main>
+        <article class="timeline">
+            <div class="year">LEGACY</div>
+            <div class="project-info">
+                <span class="role">Digital Artist / Performer</span>
+                <h2>Interactive Experiences</h2>
+                <p>Crafting original, impact-driven narratives at the intersection of art and technology.</p>
+            </div>
+        </article>
 
-    <footer class="py-8 bg-gray-900 text-center">
-        <div class="container mx-auto px-6">
-            <p class="text-gray-400">&copy; <script>document.write(new Date().getFullYear())</script> Animated Holdings Inc. All rights reserved.</p>
-            <p class="text-xs text-gray-500 mt-1">Chilliwack, British Columbia, Canada</p>
-        </div>
-    </footer>
+        <footer>
+            <div>
+                <strong>STEPHEN COOPER</strong><br>
+                Animated Holdings Inc.<br>
+                <small style="color:var(--dim)">Chilliwack, BC, Canada</small>
+            </div>
+            <a href="mailto:stephen-cooper@animated-holdings.com" class="contact-btn">Initialize Contact</a>
+        </footer>
+    </div>
 
 </body>
 </html>
