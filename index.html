@@ -83,6 +83,11 @@
             color: var(--dim);
             font-size: 0.8rem;
         }
+        
+        .status-live {
+            color: var(--accent);
+            text-shadow: 0 0 5px var(--accent);
+        }
 
         /* Hero */
         .hero {
@@ -121,6 +126,18 @@
             margin-bottom: 6rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+        
+        /* Pulse Animation for Lab Availability */
+        @keyframes pulse-border {
+            0% { border-color: var(--dim); }
+            50% { border-color: var(--accent); }
+            100% { border-color: var(--dim); }
+        }
+
+        .lab-module.active {
+            animation: pulse-border 4s infinite;
         }
 
         .lab-header {
@@ -209,7 +226,7 @@
             color: var(--dim);
         }
         
-        .year.current { color: var(--text); text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+        .year.finished { color: var(--text); }
 
         .project-info h2 {
             font-size: 2.5rem;
@@ -286,7 +303,7 @@
             <div class="meta-data">
                 LOC: CHILLIWACK, BC<br>
                 EST: 2018 — 2026<br>
-                STATUS: ONLINE
+                STATUS: <span class="status-live">AVAILABLE FOR BOOKING</span>
             </div>
         </header>
 
@@ -306,7 +323,7 @@
             </div>
         </section>
 
-        <section class="lab-module">
+        <section class="lab-module active">
             <div class="lab-header">
                 <span class="lab-title">Facility: The Volume</span>
                 <div style="text-align: right;">
@@ -346,11 +363,11 @@
         </div>
 
         <article class="timeline">
-            <div class="year current">2026</div>
+            <div class="year finished">2025—2026</div>
             <div class="project-info">
-                <span class="role">Animation</span>
+                <span class="role">Senior Animator</span>
                 <h2>Industrial Light & Magic</h2>
-                <p>Currently engaged with the industry standard. Contributing to high-end visual effects pipelines.</p>
+                <p>Delivered key performance assets for ILM's visual effects pipeline. (Contract Complete).</p>
             </div>
         </article>
 
